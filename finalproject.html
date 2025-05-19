@@ -1,0 +1,1030 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>finalproject.R</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Aptos;
+	panose-1:2 11 0 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:"DengXian Light";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"Aptos Display";
+	panose-1:2 11 0 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@DengXian Light";}
+ /* Style Definitions */
+ p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:center;
+	font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	letter-spacing:-.5pt;}
+p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
+	{mso-style-link:"Title Char";
+	margin:0in;
+	text-align:center;
+	font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	letter-spacing:-.5pt;}
+p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
+	{mso-style-link:"Title Char";
+	margin:0in;
+	text-align:center;
+	font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	letter-spacing:-.5pt;}
+p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:center;
+	font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	letter-spacing:-.5pt;}
+p.MsoDate, li.MsoDate, div.MsoDate
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;}
+p.FirstParagraph, li.FirstParagraph, div.FirstParagraph
+	{mso-style-name:"First Paragraph";
+	margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:9.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Aptos Display",sans-serif;
+	letter-spacing:-.5pt;}
+p.Author, li.Author, div.Author
+	{mso-style-name:Author;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;}
+span.VerbatimChar
+	{mso-style-name:"Verbatim Char";
+	mso-style-link:"Source Code";
+	font-family:Consolas;}
+p.SourceCode, li.SourceCode, div.SourceCode
+	{mso-style-name:"Source Code";
+	mso-style-link:"Verbatim Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	background:#F8F8F8;
+	word-break:break-all;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;}
+span.DecValTok
+	{mso-style-name:DecValTok;
+	font-family:Consolas;
+	color:#0000CF;
+	background:#F8F8F8;}
+span.FloatTok
+	{mso-style-name:FloatTok;
+	font-family:Consolas;
+	color:#0000CF;
+	background:#F8F8F8;}
+span.ConstantTok
+	{mso-style-name:ConstantTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;}
+span.SpecialCharTok
+	{mso-style-name:SpecialCharTok;
+	font-family:Consolas;
+	color:#CE5C00;
+	background:#F8F8F8;
+	font-weight:bold;}
+span.StringTok
+	{mso-style-name:StringTok;
+	font-family:Consolas;
+	color:#4E9A06;
+	background:#F8F8F8;}
+span.CommentTok
+	{mso-style-name:CommentTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-style:italic;}
+span.DocumentationTok
+	{mso-style-name:DocumentationTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-weight:bold;
+	font-style:italic;}
+span.OtherTok
+	{mso-style-name:OtherTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;}
+span.FunctionTok
+	{mso-style-name:FunctionTok;
+	font-family:Consolas;
+	color:#204A87;
+	background:#F8F8F8;
+	font-weight:bold;}
+span.AttributeTok
+	{mso-style-name:AttributeTok;
+	font-family:Consolas;
+	color:#204A87;
+	background:#F8F8F8;}
+span.NormalTok
+	{mso-style-name:NormalTok;
+	font-family:Consolas;
+	background:#F8F8F8;}
+.MsoChpDefault
+	{font-family:"Aptos",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link="#156082" vlink="#96607D" style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoTitle>finalproject.R</p>
+
+<p class=Author>hp</p>
+
+<p class=MsoDate>2024-12-10</p>
+
+<p class=SourceCode><span class=DocumentationTok><span style='font-size:11.0pt'>##
+Final Project</span></span><span style='color:black'><br>
+</span><span class=CommentTok><span style='font-size:11.0pt'># Data 101</span></span><span
+style='color:black'><br>
+</span><span class=CommentTok><span style='font-size:11.0pt'># Jana Eltawil</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=DocumentationTok><span style='font-size:11.0pt'>## Libraries</span></span><span
+style='color:black'><br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>library</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(randomForest)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## randomForest 4.7-1.1</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## Type rfNews() to see new features/changes/bug fixes.</span></span></p>
+
+<p class=SourceCode><span class=FunctionTok><span style='font-size:11.0pt'>library</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(GGally)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## Loading required package: ggplot2</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Attaching package: 'ggplot2'</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## The following object is masked from 'package:randomForest':</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##    
+margin</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## Registered S3 method overwritten by 'GGally':</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+method from   </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
++.gg   ggplot2</span></span></p>
+
+<p class=SourceCode><span class=FunctionTok><span style='font-size:11.0pt'>library</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(rsample)</span></span><span
+style='color:black'><br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>library</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(caret)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## Loading required package: lattice</span></span></p>
+
+<p class=SourceCode><span class=FunctionTok><span style='font-size:11.0pt'>library</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(rpart)</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=DocumentationTok><span style='font-size:11.0pt'>## 1.
+Dataset </span></span><span style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>data </span></span><span
+class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>read.csv</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;~/Desktop/final project
+101/tiktok.csv&quot;</span></span><span class=NormalTok><span style='font-size:
+11.0pt;color:black'>)</span></span><span style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>Cleaned_data
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> data[, </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>c</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;tempo&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;valence&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;liveness&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;speechiness&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>,</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>                    
+</span></span><span class=StringTok><span style='font-size:11.0pt'>&quot;acousticness&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;instrumentalness&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;key&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;mode&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;popularity&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)]</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>master_plot1
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>pairs</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(Cleaned_data, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>main =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;Scatterplot Matrix of
+Features&quot;</span></span><span class=NormalTok><span style='font-size:11.0pt;
+color:black'>)</span></span></p>
+
+<p class=FirstParagraph><img width=420 height=336
+src="finalproject.fld/image001.png"></p>
+
+<p class=SourceCode><span class=NormalTok><span style='font-size:11.0pt;
+color:black'>master_plot_refined </span></span><span class=OtherTok><span
+style='font-size:11.0pt'>&lt;-</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'> </span></span><span class=FunctionTok><span
+style='font-size:11.0pt'>ggpairs</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>(Cleaned_data)</span></span><span
+style='color:black'><br>
+<br>
+<br>
+</span><span class=DocumentationTok><span style='font-size:11.0pt'>## 2. Data
+Cleaning</span></span><span style='color:black'><br>
+<br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>sapply</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(Cleaned_data,
+class)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>##            tempo          valence         liveness     
+speechiness </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##       
+&quot;numeric&quot;        &quot;numeric&quot;       
+&quot;numeric&quot;        &quot;numeric&quot; </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##    
+acousticness instrumentalness              key             mode </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##       
+&quot;numeric&quot;        &quot;numeric&quot;       
+&quot;integer&quot;        &quot;integer&quot; </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##      
+popularity </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##       
+&quot;integer&quot;</span></span></p>
+
+<p class=SourceCode><span class=NormalTok><span style='font-size:11.0pt;
+color:black'>key_labels </span></span><span class=OtherTok><span
+style='font-size:11.0pt'>&lt;-</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'> </span></span><span class=FunctionTok><span
+style='font-size:11.0pt'>c</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>(</span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;C&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;C#&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;D&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;D#&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;E&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;F&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;F#&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;G&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;G#&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;A&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;A#&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>, </span></span><span class=StringTok><span
+style='font-size:11.0pt'>&quot;B&quot;</span></span><span class=NormalTok><span
+style='font-size:11.0pt;color:black'>)</span></span><span style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>Cleaned_data</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>key </span></span><span
+class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>factor</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(Cleaned_data</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>key, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>levels =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=DecValTok><span style='font-size:11.0pt'>0</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>:</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>11</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>labels =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> key_labels)</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>mode_labels
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>c</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;Minor&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;Major&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>Cleaned_data</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>mode </span></span><span
+class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>factor</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(Cleaned_data</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>mode, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>levels =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=DecValTok><span style='font-size:11.0pt'>0</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>:</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>1</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>labels =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> mode_labels)</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>  </span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>  </span></span><span
+style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>Cleaned_data</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>popularity </span></span><span
+class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>cut</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(Cleaned_data</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>popularity, </span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>                                 
+</span></span><span class=AttributeTok><span style='font-size:11.0pt'>breaks =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>c</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>0</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=DecValTok><span style='font-size:11.0pt'>25</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=DecValTok><span style='font-size:11.0pt'>50</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=DecValTok><span style='font-size:11.0pt'>75</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=DecValTok><span style='font-size:11.0pt'>101</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>), </span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>                                 
+</span></span><span class=AttributeTok><span style='font-size:11.0pt'>labels =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>c</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;Unpopular&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;Moderately Popular&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;Popular&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;Very Popular&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>),</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>                                 
+</span></span><span class=AttributeTok><span style='font-size:11.0pt'>include.lowest
+=</span></span><span class=NormalTok><span style='font-size:11.0pt;color:black'>
+</span></span><span class=ConstantTok><span style='font-size:11.0pt'>TRUE</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+<br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>  </span></span><span
+style='color:black'><br>
+</span><span class=DocumentationTok><span style='font-size:11.0pt'>## 3.
+Splitting the observations</span></span><span style='color:black'><br>
+<br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>set.seed</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>12453</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>data.split
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>initial_split</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(Cleaned_data, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>prop =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FloatTok><span style='font-size:11.0pt'>0.75</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>train </span></span><span
+class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>training</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(data.split)</span></span><span
+style='color:black'><br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>summary</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(train)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>##      tempo           valence          liveness       
+speechiness    </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Min.   : 59.97   Min.   :0.0338   Min.   :0.01930   Min.   :0.0232  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+1st Qu.:100.04   1st Qu.:0.3730   1st Qu.:0.09265   1st Qu.:0.0486  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Median :120.71   Median :0.5430   Median :0.12200   Median :0.0842  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Mean   :120.49   Mean   :0.5483   Mean   :0.17748   Mean   :0.1396  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+3rd Qu.:135.01   3rd Qu.:0.7350   3rd Qu.:0.22400   3rd Qu.:0.2020  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Max.   :216.05   Max.   :0.9980   Max.   :0.93900   Max.   :0.9110  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                                                                     
+</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+acousticness       instrumentalness         key          mode     </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Min.   :0.0000105   Min.   :0.0000000   C#     : 788   Minor:2129  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+1st Qu.:0.0306000   1st Qu.:0.0000000   C      : 600   Major:2930  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Median :0.1290000   Median :0.0000000   B      : 516               </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Mean   :0.2174215   Mean   :0.0337191   G#     : 442               </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+3rd Qu.:0.3180000   3rd Qu.:0.0002335   F      : 400               </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Max.   :0.9910000   Max.   :0.9620000   F#     : 397               </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                                         
+(Other):1916               </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##              
+popularity  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Unpopular         : 635  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Moderately Popular: 913  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Popular           :2186  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Very Popular      :1325  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                          
+</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                          
+</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span></p>
+
+<p class=SourceCode><span class=NormalTok><span style='font-size:11.0pt;
+color:black'>test </span></span><span class=OtherTok><span style='font-size:
+11.0pt'>&lt;-</span></span><span class=NormalTok><span style='font-size:11.0pt;
+color:black'> </span></span><span class=FunctionTok><span style='font-size:
+11.0pt'>testing</span></span><span class=NormalTok><span style='font-size:11.0pt;
+color:black'>(data.split)</span></span><span style='color:black'><br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>summary</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(test)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>##      tempo           valence          liveness      
+speechiness    </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Min.   : 54.37   Min.   :0.0331   Min.   :0.0200   Min.   :0.0248  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+1st Qu.:101.86   1st Qu.:0.3660   1st Qu.:0.0930   1st Qu.:0.0486  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Median :121.74   Median :0.5430   Median :0.1230   Median :0.0863  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Mean   :120.62   Mean   :0.5443   Mean   :0.1779   Mean   :0.1415  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+3rd Qu.:134.87   3rd Qu.:0.7340   3rd Qu.:0.2280   3rd Qu.:0.2040  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Max.   :203.91   Max.   :0.9980   Max.   :0.9520   Max.   :0.7770  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##     
+                                                               </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+acousticness      instrumentalness         key         mode    </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Min.   :0.000045   Min.   :0.0000000   C#     :241   Minor:695  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+1st Qu.:0.034200   1st Qu.:0.0000000   C      :193   Major:992  </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Median :0.136000   Median :0.0000000   G#     :178              </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Mean   :0.226838   Mean   :0.0339790   B      :168              </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+3rd Qu.:0.331000   3rd Qu.:0.0001825   G      :155              </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Max.   :0.991000   Max.   :0.9530000   F#     :135              </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                                        
+(Other):617              </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##              
+popularity </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Unpopular         :223  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Moderately Popular:311  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Popular           :698  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Very Popular      :455  </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                   
+      </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                         
+</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span></p>
+
+<p class=SourceCode><span class=FunctionTok><span style='font-size:11.0pt'>dim</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(train)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## [1] 5059    9</span></span></p>
+
+<p class=SourceCode><span class=FunctionTok><span style='font-size:11.0pt'>dim</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(test)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## [1] 1687    9</span></span></p>
+
+<p class=SourceCode><span class=CommentTok><span style='font-size:11.0pt'># We
+have 5059 observations in the training set and 1687 observations in the test
+set, with 8 predictor variables and one response: 'popularity'</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=CommentTok><span style='font-size:11.0pt'># Setting class
+weights (no longer used in the analysis)</span></span><span style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>class_counts
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>table</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(Cleaned_data</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>popularity)</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>total_samples
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>sum</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(class_counts)</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>num_classes
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>length</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(class_counts)</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>class_weights
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> total_samples </span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>/</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> (num_classes </span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>*</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> class_counts)</span></span><span
+style='color:black'><br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>names</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(class_weights) </span></span><span
+class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>levels</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(Cleaned_data</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>popularity)</span></span><span
+style='color:black'><br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>print</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(class_weights)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>##          Unpopular Moderately Popular            Popular      
+Very Popular </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##         
+1.9656177          1.3778595          0.5847781          0.9474719</span></span></p>
+
+<p class=SourceCode><span class=DocumentationTok><span style='font-size:11.0pt'>##
+4. Cross Validation </span></span><span style='color:black'><br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>set.seed</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>12453</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>tune_grid
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>=</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>expand.grid</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>mtry=</span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>c</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>2</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>:</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>5</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>))</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>train_control</span></span><span
+class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>trainControl</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(</span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>method=</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;cv&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>number=</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>10</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>savePredictions =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=ConstantTok><span style='font-size:11.0pt'>TRUE</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+<br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>cv_rf </span></span><span
+class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>train</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(popularity</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>~</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>., </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>data =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> train, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>trControl=</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>train_control, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>method=</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;rf&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>,</span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>tuneGrid=</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>tune_grid, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>ntree=</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>1000</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>cv_rf</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## Random Forest </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+5059 samples</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##   
+8 predictor</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##   
+4 classes: 'Unpopular', 'Moderately Popular', 'Popular', 'Very Popular' </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+No pre-processing</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Resampling: Cross-Validated (10 fold) </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Summary of sample sizes: 4551, 4553, 4553, 4555, 4553, 4551, ... </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Resampling results across tuning parameters:</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+mtry  Accuracy   Kappa    </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+2     0.5866880  0.3123445</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+3     0.7140016  0.5532190</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+4     0.7264460  0.5778428</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+5     0.7264483  0.5798396</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Accuracy was used to select the optimal model using the largest value.</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+The final value used for the model was mtry = 5.</span></span></p>
+
+<p class=SourceCode><span class=DocumentationTok><span style='font-size:11.0pt'>##
+5. Random Forest Training</span></span><span style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>rf.model
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>randomForest</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(popularity </span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>~</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>., </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>data=</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>train, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>ntree=</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>1000</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>mtry=</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>5</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>, </span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>classwt =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=ConstantTok><span style='font-size:11.0pt'>NULL</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=FunctionTok><span style='font-size:11.0pt'>print</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(rf.model)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Call:</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+randomForest(formula = popularity ~ ., data = train, ntree = 1000,      mtry =
+5, classwt = NULL) </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##               
+Type of random forest: classification</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                     
+Number of trees: 1000</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+No. of variables tried at each split: 5</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##        
+OOB estimate of  error rate: 25.91%</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Confusion matrix:</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                   
+Unpopular Moderately Popular Popular Very Popular</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Unpopular                236                 70     294           35</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Moderately Popular        35                401     439           38</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Popular                   35                 89    1998           64</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Very Popular              10                 24     178         1113</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                   
+class.error</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Unpopular           0.62834646</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Moderately Popular  0.56078861</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Popular             0.08600183</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Very Popular        0.16000000</span></span></p>
+
+<p class=SourceCode><span class=DocumentationTok><span style='font-size:11.0pt'>##
+6. Random Forest Testing</span></span><span style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>predict_unseen
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>predict</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(rf.model,test,</span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>type =</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=StringTok><span style='font-size:11.0pt'>'class'</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span><span
+style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>tab_rf </span></span><span
+class=OtherTok><span style='font-size:11.0pt'>=</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>table</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(predict_unseen,test</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>popularity)</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>caret</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>::</span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>confusionMatrix</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(tab_rf,</span></span><span
+class=AttributeTok><span style='font-size:11.0pt'>positive=</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;Yes&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt;
+color:black'>## Confusion Matrix and Statistics</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                    
+</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+predict_unseen       Unpopular Moderately Popular Popular Very Popular</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+Unpopular                 88                 10      12            2</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+Moderately Popular        14                145      27            8</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+Popular                  110                147     638           61</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##  
+Very Popular              11                  9      21          384</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Overall Statistics</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                                          
+</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##    
+           Accuracy : 0.7439          </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                 
+95% CI : (0.7224, 0.7646)</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##    
+No Information Rate : 0.4138          </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##    
+P-Value [Acc &gt; NIR] : &lt; 2.2e-16       </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                                          
+</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                  
+Kappa : 0.6164          </span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                                          
+</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## 
+Mcnemar's Test P-Value : &lt; 2.2e-16       </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Statistics by Class:</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>## </span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                     
+Class: Unpopular Class: Moderately Popular Class: Popular</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Sensitivity                   0.39462                   0.46624         0.9140</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Specificity                   0.98361                   0.96439         0.6785</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Pos Pred Value                0.78571                   0.74742         0.6674</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Neg Pred Value                0.91429                   0.88881         0.9179</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Prevalence                    0.13219                   0.18435         0.4138</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Detection Rate                0.05216                   0.08595         0.3782</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Detection Prevalence          0.06639                   0.11500         0.5667</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Balanced Accuracy             0.68911                   0.71531         0.7963</span></span><span
+style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##                     
+Class: Very Popular</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Sensitivity                       0.8440</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Specificity                       0.9667</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Pos Pred Value                    0.9035</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Neg Pred Value                    0.9437</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Prevalence                        0.2697</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Detection Rate                    0.2276</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Detection Prevalence              0.2519</span></span><span style='color:black'><br>
+</span><span class=VerbatimChar><span style='font-size:11.0pt;color:black'>##
+Balanced Accuracy                 0.9053</span></span></p>
+
+<p class=SourceCode><span class=DocumentationTok><span style='font-size:11.0pt'>##
+7. Evaluation of Model Importance</span></span><span style='color:black'><br>
+<br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>rf_importance
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> rf.model</span></span><span
+class=SpecialCharTok><span style='font-size:11.0pt'>$</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>importance</span></span><span
+style='color:black'><br>
+</span><span class=NormalTok><span style='font-size:11.0pt;color:black'>rf_Importance_plot
+</span></span><span class=OtherTok><span style='font-size:11.0pt'>&lt;-</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'> </span></span><span
+class=FunctionTok><span style='font-size:11.0pt'>varImpPlot</span></span><span
+class=NormalTok><span style='font-size:11.0pt;color:black'>(rf.model)</span></span></p>
+
+<p class=FirstParagraph><img width=420 height=336 id=Picture
+src="finalproject.fld/image002.png"></p>
+
+</div>
+
+</body>
+
+</html>
